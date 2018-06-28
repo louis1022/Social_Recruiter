@@ -4,19 +4,18 @@ from . import views
 
 
 app_name='accounts'
-
 urlpatterns=[
     path('top/',views.top_page, name="top"),
-    path('login/', # ログイン
+    path('login/',
          django.contrib.auth.views.login,
          {
-             'template_name': 'user_auth/login.html',
+             'template_name': 'accounts/login.html',
          },
          name='login'),
-    path('logout/', # ログアウト
+    path('logout/',
          django.contrib.auth.views.logout,
          {
-             'template_name': 'user_auth/logout.html',
+             'template_name': 'accounts/logout.html',
          },
          name='logout'),
 ]
