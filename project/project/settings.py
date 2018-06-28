@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     # 追記
     'accounts',
     'social_django',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
