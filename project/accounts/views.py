@@ -6,4 +6,4 @@ from social_django.models import UserSocialAuth
 @login_required
 def top_page(request):
     user = UserSocialAuth.objects.get(user_id=request.user.id)
-    return render(request,'accounts/top.html',{'user': user})
+    return render(request,'top.html',{'user': user})
