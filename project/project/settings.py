@@ -26,9 +26,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 追記
+    'bootstrap4',
     'accounts',
     'social_django',
-    'bootstrap4',
+    'app',
 ]
 
 MIDDLEWARE = [

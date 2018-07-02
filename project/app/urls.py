@@ -1,8 +1,7 @@
-import django.contrib.auth.views
-from django.urls import path,include
-from . import views
+from django.urls import path
+from app.views import TopPage
 
 app_name='app'
-urlpatterns=[
-# 各種機能相対パス
+urlpatterns = [
+    path('/', TopPage.as_view(), name='top_page'),
 ]
