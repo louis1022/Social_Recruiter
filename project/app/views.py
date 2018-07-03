@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
-from django.views.generic.base import View
-from django.views.generic import TemplateView
+from django.http import HttpResponse
+from django.views.generic import TemplateView, View
 
 APP_NAME = 'app'
 
