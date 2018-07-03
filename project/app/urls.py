@@ -3,5 +3,5 @@ from app.views import TopPage
 
 app_name='app'
 urlpatterns = [
-    path('/', TopPage.as_view(), name='top_page'),
+    path('', TopPage.as_view(), name='top_page'),
 ]

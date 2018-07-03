@@ -9,13 +9,13 @@ urlpatterns=[
     path('login/',
         django.contrib.auth.views.login,
         {
-            'template_name': 'login.html',
+            'template_name': '%s/login.html' % app_name,
         },
          name='login'),
     path('logout/',
         django.contrib.auth.views.logout,
         {
-            'template_name': 'logout.html',
+            'template_name': '%s/logout.html' % app_name,
         },
         name='logout'),
 ]

@@ -8,5 +8,5 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('social_django.urls', namespace='social')),
     # アプリケーション
-    path('app/', include('app.urls')),
+    path('/', include('app.urls')),
 ]

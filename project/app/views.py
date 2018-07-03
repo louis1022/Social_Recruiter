@@ -1,9 +1,9 @@
-from django.views.generic.base import View
 from django.shortcuts import render
+
+from django.views.generic.base import View
+from django.views.generic import TemplateView
 
 APP_NAME = 'app'
 
-class TopPage(View):
+class TopPage(TemplateView):
     template_name = '%s/index.html' % APP_NAME
-    def get(self, request):
-        return render(request, self.template_name)
