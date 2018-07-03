@@ -4,6 +4,7 @@ from . import views
 
 
 app_name='accounts'
+
 urlpatterns=[
     path('top/',views.top_page, name="top"),
     path('login/',
