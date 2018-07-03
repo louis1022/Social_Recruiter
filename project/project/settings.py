@@ -26,8 +26,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 追記
+    'bootstrap4',
     'accounts',
     'social_django',
+    'app',
 ]
 
 MIDDLEWARE = [
@@ -45,7 +47,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -110,6 +112,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 
 AUTHENTICATION_BACKENDS = [
@@ -119,4 +122,4 @@ AUTHENTICATION_BACKENDS = [
 
 SOCIAL_AUTH_TWITTER_KEY = 'q38HFhIKZTSAS6dvITUTH1R70' # Consumer Key (API Key)
 SOCIAL_AUTH_TWITTER_SECRET = 'wwu6eqWqD3wvnk3Um1ufnZysBRCyvpqqkVN1eStvmvIjuTE1ee' # Consumer Secret (API Secret)
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/accounts/top' # リダイレクトURL
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/' # リダイレクトURL

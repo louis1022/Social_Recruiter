@@ -1,3 +1,9 @@
 from django.shortcuts import render
 
-# Create your views here.
+from django.http import HttpResponse
+from django.views.generic import TemplateView, View
+
+APP_NAME = 'app'
+
+class TopPage(TemplateView):
+    template_name = '%s/index.html' % APP_NAME
