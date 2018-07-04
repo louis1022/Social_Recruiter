@@ -7,3 +7,6 @@ APP_NAME = 'app'
 
 class TopPage(TemplateView):
     template_name = '%s/index.html' % APP_NAME
+
+class DashboardPage(TemplateView):
+    template_name = '%s/dashboard.html' % APP_NAME
