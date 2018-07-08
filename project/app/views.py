@@ -10,15 +10,17 @@ from social_django.models import UserSocialAuth
 APP_NAME = 'app'
 
 
-class topPage(TemplateView):
-    template_name = '%s/top.html' % APP_NAME
 
-class DashboardPage(LoginRequiredMixin, TemplateView):
+class DashboardPage(TemplateView):
     template_name = '%s/dashboard.html' % APP_NAME
 
     def get(self, request, *args, **kwargs):
-        user = UserSocialAuth.objects.get(user_id=request.user.id)
-        return render(request, self.template_name, {'user': user})
+        if request.user.is_anonymous:
+            self.template_name = '%s/top.html' % APP_NAME
+            return render(request, self.template_name, {})
+        elif request.user.is_authenticated:
+            user = UserSocialAuth.objects.get(user_id=request.user.id)
+            return render(request, self.template_name, {'user': user})
 
 
 class userProfilePage(LoginRequiredMixin, TemplateView):
