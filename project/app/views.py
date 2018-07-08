@@ -10,6 +10,9 @@ from social_django.models import UserSocialAuth
 APP_NAME = 'app'
 
 
+class topPage(TemplateView):
+    template_name = '%s/top.html' % APP_NAME
+
 class DashboardPage(LoginRequiredMixin, TemplateView):
     template_name = '%s/dashboard.html' % APP_NAME
 

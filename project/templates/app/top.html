@@ -1,0 +1,33 @@
+{% extends 'app/base.html' %}
+
+{% block display_nav %}Dashboard{% endblock %}
+{% block active_nav_name %}Dashboard{% endblock %}
+
+{% block sidebar %}
+<ul class="nav">
+  <li class="nav-item active ">
+    <a class="nav-link" href="/dashboard">
+      <i class="material-icons">dashboard</i>
+      <p>Dashboard</p>
+    </a>
+  </li>
+  <li class="nav-item ">
+    <a class="nav-link" href="/user">
+      <i class="material-icons">person</i>
+      <p>User Profile</p>
+    </a>
+  </li>
+  <li class="nav-item ">
+    <a class="nav-link" href="/tables">
+      <i class="material-icons">content_paste</i>
+      <p>Table List</p>
+    </a>
+  </li>
+  <li class="nav-item ">
+    <a class="nav-link" href="{% url 'social:begin' 'twitter' %}">
+      <i class="material-icons">person</i>
+      <p>ログイン</p>
+    </a>
+  </li>
+</ul>
+{% endblock %}
