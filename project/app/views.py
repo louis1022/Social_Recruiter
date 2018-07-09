@@ -7,6 +7,8 @@ from django.views.generic import TemplateView, View
 
 from social_django.models import UserSocialAuth
 
+from app.models import Person
+
 APP_NAME = 'app'
 
 
@@ -35,5 +37,7 @@ class tablesPage(LoginRequiredMixin, TemplateView):
     template_name = '%s/tables.html' % APP_NAME
 
     def get(self, request, *args, **kwargs):
-        user = UserSocialAuth.objects.get(user_id=request.user.id)
-        return render(request, self.template_name, {'user': user})
+        context = super(tablesPage, self).get_context_data(**kwargs)
+        persons = Person.objects.all()
+        context['persons'] = persons
+        return render(request, self.template_name, context)
