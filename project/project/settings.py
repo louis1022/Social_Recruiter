@@ -120,6 +120,11 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
+
+
 SOCIAL_AUTH_TWITTER_KEY = 'q38HFhIKZTSAS6dvITUTH1R70' # Consumer Key (API Key)
 SOCIAL_AUTH_TWITTER_SECRET = 'wwu6eqWqD3wvnk3Um1ufnZysBRCyvpqqkVN1eStvmvIjuTE1ee' # Consumer Secret (API Secret)
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/' # リダイレクトURL
+
+LOGIN_REDIRECT_URL='/'
+LOGOUT_REDIRECT_URL='/'

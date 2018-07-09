@@ -1,0 +1,40 @@
+{% extends 'app/base.html' %}
+
+{% block display_nav %}User Profile{% endblock %}
+{% block active_nav_name %}User Profile{% endblock %}
+
+{% block sidebar %}
+  <ul class="nav">
+    <li class="nav-item ">
+      <a class="nav-link" href="/">
+        <i class="material-icons">dashboard</i>
+        <p>Dashboard</p>
+      </a>
+    </li>
+    <li class="nav-item active ">
+      <a class="nav-link" href="/user">
+        <i class="material-icons">person</i>
+        <p>User Profile</p>
+      </a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link" href="/tables">
+        <i class="material-icons">content_paste</i>
+        <p>Table List</p>
+      </a>
+    </li>
+  </ul>
+{% endblock %}
+
+
+{% block content %}
+  <div>
+    <div>
+      <p><b>ScreenName</b>:{{ user.access_token.screen_name }}</p>
+      <p><b>UserId</b>:{{ user.access_token.user_id }}</p>
+      <p><b>OAuthTokenSecret</b>:{{ user.access_token.oauth_token_secret }}</p>
+      <p><b>OAuthToken</b>:{{ user.access_token.oauth_token }}</p>
+      <p><b>AuthTime</b>:{{ user.extra_data.auth_time }}</p>
+    </div>
+  </div>
+{% endblock %}
