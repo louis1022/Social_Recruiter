@@ -1,7 +1,7 @@
 from django.urls import path,include
 
 from accounts import views
-from django.contrib.auth.views
+import django.contrib.auth.views
 
 
 app_name='accounts'
