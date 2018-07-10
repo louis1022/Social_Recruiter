@@ -7,5 +7,5 @@ from social_django.models import UserSocialAuth
 class MessageForm(forms.ModelForm):
 
     class Meta:
-        model = Message
-        fields = ('message',)
+        model = Message # どのモデルからformつくる？
+        fields = ('message',) # どのフィールドこのformで使う

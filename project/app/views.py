@@ -1,9 +1,9 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic,View
-from django.views.generic import CreateView, UpdateView
 from django.contrib import messages
 from django.shortcuts import get_object_or_404,render,redirect
 from social_django.models import UserSocialAuth
+from django.urls import reverse_lazy
 from .models import Message
 from .forms import MessageForm
 
@@ -28,16 +28,37 @@ class TopPage(generic.TemplateView):
 # Modelformmixin
 
 def get_message(request):
+    user = get_object_or_404(UserSocialAuth, user_id=request.user.id)
+    mess = Message.objects.filter(user=user)
     if request.method == 'POST':
-        form = MessageForm(request.POST)
+        form = MessageForm(request.POST) # request.POSTに送られてきたデータがある
         if form.is_valid():
-            test = Message(message=form.cleaned_data['message'])
+            post = form.save(commit=False) # まだMessageモデルは保存しない
             user = get_object_or_404(UserSocialAuth, user_id=request.user.id)
-            test.user = user
-            test.save()
+            post.user = user
+            post.save()
             messages.success(request, "保存しました")
-            return redirect('/create')
-    else:
+            return redirect('/message/create')
+    else: # 初回アクセスで空のformほしい
         form = MessageForm()
 
-    return render(request, 'app/form.html', {'form':form})
+    return render(request, 'app/form.html', {'form':form, 'mess':mess})
+
+class UpdateMessage(generic.UpdateView):
+    model = Message
+    form_class = MessageForm
+    template_name = "app/form_update.html"
+    success_url = "/message/create"
+
+class DeleteMessage(generic.DeleteView):
+    model = Message
+    form_class = MessageForm
+
+    success_url = reverse_lazy(get_message)
+
+    def delete(self, request, *args, **kwargs):
+        result = super().delete(request, *args, **kwargs)
+        messages.success(
+            self.request, '「{}」を削除しました'.format(self.object))
+
+        return result

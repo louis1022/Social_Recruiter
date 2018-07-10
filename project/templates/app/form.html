@@ -1,7 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <table class="table">
+        <tr>
+            <th class="text-center">Message</th>
+            <th class="text-right">Actions</th>
+        </tr>
+    <tbody>
+{% for m in mess %}
+    <tr><td>{{ m.message }}</td>
+    <td class="td-actions text-right">
+        <button type="button" rel="tooltip" class="btn btn-success" onclick="location.href='{% url 'edit' pk=m.pk %}'">
+            <i class="material-icons">edit</i>
+        </button>
+        <button type="button" rel="tooltip" class="btn btn-danger" onclick="location.href='{% url 'delete' pk=m.pk %}'">
+            <i class="material-icons">close</i>
+        </button>
+    </td>
+    </tr>
+{% endfor %}
+    </tbody>
+    </table>
 {% with form as f %}
-    <form action="/create/" method="post">
+    <form method="post">
     {% csrf_token %}
         <div class="form-group">
             <label>{{ f.message.label }}</label>
@@ -11,13 +39,6 @@
     </form>
 
 {% endwith %}
-{% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
 
 <script>
     var activeElement = document.getElementById('create');

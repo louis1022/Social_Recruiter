@@ -1,0 +1,8 @@
+<h1>Message</h1>
+<ul>
+    {% for article in object_list %}
+        <li>{{ article.message }}</li>
+    {% empty %}
+        <li>No articles yet.</li>
+    {% endfor %}
+</ul>
