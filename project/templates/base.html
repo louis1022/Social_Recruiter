@@ -31,11 +31,17 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
-            <a class="nav-link" href="#0">
+          <li class="nav-item" id="top">
+            <a class="nav-link" href="/">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
+          </li>
+          <li class="nav-item" id="create">
+              <a class="nav-link" href="/message/create">
+                  <i class="material-icons">content_paste</i>
+                  <p>Message</p>
+              </a>
           </li>
           <!-- your sidebar here -->
         </ul>
@@ -70,6 +76,7 @@
       <div class="content">
         <div class="container-fluid">
           <!-- your content here -->
+            {% block content %}{% endblock %}
         </div>
       </div>
       <footer class="footer">
