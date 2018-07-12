@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="769e21eb-ac01-4c7e-b2e7-4073b3d970ab" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/project/app/forms.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/project/templates/app/form_update.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/project/templates/app/message_confirm_delete.html" />
-      <change beforePath="$PROJECT_DIR$/project/accounts/urls.py" afterPath="$PROJECT_DIR$/project/accounts/urls.py" />
-      <change beforePath="$PROJECT_DIR$/project/app/models.py" afterPath="$PROJECT_DIR$/project/app/models.py" />
-      <change beforePath="$PROJECT_DIR$/project/app/urls.py" afterPath="$PROJECT_DIR$/project/app/urls.py" />
-      <change beforePath="$PROJECT_DIR$/project/app/views.py" afterPath="$PROJECT_DIR$/project/app/views.py" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/project/db.sqlite3" afterPath="$PROJECT_DIR$/project/db.sqlite3" />
-      <change beforePath="$PROJECT_DIR$/project/templates/app/base.html" afterPath="$PROJECT_DIR$/project/templates/app/base.html" />
-      <change beforePath="$PROJECT_DIR$/project/templates/app/dashboard.html" afterPath="$PROJECT_DIR$/project/templates/app/dashboard.html" />
-      <change beforePath="$PROJECT_DIR$/project/templates/app/tables.html" afterPath="$PROJECT_DIR$/project/templates/app/tables.html" />
-      <change beforePath="$PROJECT_DIR$/project/templates/app/top.html" afterPath="$PROJECT_DIR$/project/templates/app/top.html" />
-      <change beforePath="$PROJECT_DIR$/project/templates/app/user.html" afterPath="$PROJECT_DIR$/project/templates/app/user.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -124,7 +113,7 @@
         <entry file="file://$PROJECT_DIR$/project/app/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="9" column="53" lean-forward="true" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="53" />
+              <caret line="9" column="53" lean-forward="false" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="53" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -404,11 +393,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36337000" />
+    <option name="totallyTimeSpent" value="36832000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="815" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -420,7 +408,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26527777" sideWeight="0.49713057" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26527777" sideWeight="0.49713057" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25250357" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -810,7 +798,7 @@
     <entry file="file://$PROJECT_DIR$/project/app/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="9" column="53" lean-forward="true" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="53" />
+          <caret line="9" column="53" lean-forward="false" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="53" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
