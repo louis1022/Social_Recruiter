@@ -79,7 +79,6 @@ img::-moz-selection {
 }
 
 #mainNav {
-  position: absolute;
   border-bottom: 1px solid #e9ecef;
   background-color: white;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -88,6 +87,7 @@ img::-moz-selection {
 #mainNav .navbar-brand {
   font-weight: 800;
   color: #343a40;
+
 }
 
 #mainNav .navbar-toggler {
@@ -96,6 +96,7 @@ img::-moz-selection {
   padding: 13px;
   text-transform: uppercase;
   color: #343a40;
+
 }
 
 #mainNav .navbar-nav > li.nav-item > a {
