@@ -14,16 +14,15 @@ from .forms import MessageForm
 from django.views import generic,View
 from django.contrib import messages
 
+
 APP_NAME = 'app'
-
-
 
 class DashboardPage(TemplateView):
     template_name = '%s/dashboard.html' % APP_NAME
 
     def get(self, request, *args, **kwargs):
         if request.user.is_anonymous:
-            self.template_name = '%s/top.html' % APP_NAME
+            self.template_name = '%s/lp.html' % APP_NAME
             return render(request, self.template_name, {})
         elif request.user.is_authenticated:
             user = UserSocialAuth.objects.get(user_id=request.user.id)
