@@ -10,4 +10,5 @@ urlpatterns=[
     path('',views.top_page, name="top"),
     path('login/', auth_views.login, name='login'),
     path('logout/', auth_views.logout, name='logout'),
+
 ]
