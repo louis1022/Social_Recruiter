@@ -17,6 +17,7 @@ from django.contrib import messages
 
 APP_NAME = 'app'
 
+
 class DashboardPage(TemplateView):
     template_name = '%s/dashboard.html' % APP_NAME
 
@@ -37,14 +38,20 @@ class userProfilePage(LoginRequiredMixin, TemplateView):
         return render(request, self.template_name, {'user': user})
 
 
+
 class tablesPage(LoginRequiredMixin, TemplateView):
     template_name = '%s/tables.html' % APP_NAME
+    q = ''
 
     def get(self, request, *args, **kwargs):
         context = super(tablesPage, self).get_context_data(**kwargs)
-        persons = Person.objects.all()
+        if 'q' in request.GET.keys():
+            self.q = request.GET['q']
+        context['q'] = self.q
+        persons = Person.objects.filter(descriptionn__contains=self.q)
         context['persons'] = persons
         return render(request, self.template_name, context)
+
 
 def get_message(request):
     user = get_object_or_404(UserSocialAuth, user_id=request.user.id)
@@ -63,11 +70,13 @@ def get_message(request):
 
     return render(request, 'app/form.html', {'form':form, 'mess':mess})
 
+
 class UpdateMessage(generic.UpdateView):
     model = Message
     form_class = MessageForm
     template_name = "app/form_update.html"
     success_url = "/message/create"
+
 
 class DeleteMessage(generic.DeleteView):
     model = Message
