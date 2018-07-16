@@ -14,8 +14,8 @@ from .forms import MessageForm
 from django.views import generic,View
 from django.contrib import messages
 
-APP_NAME = 'app'
 
+APP_NAME = 'app'
 
 
 class DashboardPage(TemplateView):
@@ -23,7 +23,7 @@ class DashboardPage(TemplateView):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_anonymous:
-            self.template_name = '%s/top.html' % APP_NAME
+            self.template_name = '%s/lp.html' % APP_NAME
             return render(request, self.template_name, {})
         elif request.user.is_authenticated:
             user = UserSocialAuth.objects.get(user_id=request.user.id)
@@ -38,14 +38,20 @@ class userProfilePage(LoginRequiredMixin, TemplateView):
         return render(request, self.template_name, {'user': user})
 
 
+
 class tablesPage(LoginRequiredMixin, TemplateView):
     template_name = '%s/tables.html' % APP_NAME
+    q = ''
 
     def get(self, request, *args, **kwargs):
         context = super(tablesPage, self).get_context_data(**kwargs)
-        persons = Person.objects.all()
+        if 'q' in request.GET.keys():
+            self.q = request.GET['q']
+        context['q'] = self.q
+        persons = Person.objects.filter(descriptionn__contains=self.q)
         context['persons'] = persons
         return render(request, self.template_name, context)
+
 
 def get_message(request):
     user = get_object_or_404(UserSocialAuth, user_id=request.user.id)
@@ -64,11 +70,13 @@ def get_message(request):
 
     return render(request, 'app/form.html', {'form':form, 'mess':mess})
 
+
 class UpdateMessage(generic.UpdateView):
     model = Message
     form_class = MessageForm
     template_name = "app/form_update.html"
     success_url = "/message/create"
+
 
 class DeleteMessage(generic.DeleteView):
     model = Message
