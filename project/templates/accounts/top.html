@@ -1,12 +1,5 @@
-<html>
-<head>
-    <title>TOP</title>
-</head>
-<body>
-
-<div>
-  <a href="/accounts/logout"><button type="button" >ログアウト</button></a>
-</div>
+{% extends 'base.html' %}
+{% block content %}
 
 <div>
   <div>
@@ -14,9 +7,30 @@
     <p><b>UserId</b>:{{ user.access_token.user_id }}</p>
     <p><b>OAuthTokenSecret</b>:{{ user.access_token.oauth_token_secret }}</p>
     <p><b>OAuthToken</b>:{{ user.access_token.oauth_token }}</p>
-    <p><b>AuthTime</b>:{{ user.extra_data.auth_time }}</p>
+    <p><b>会社名</b>:{{ mess.company_name }}</p>
+    <p><b>採用者</b>:{{ mess.recruiter }}</p>
   </div>
 </div>
+{% with form as f %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>{{ f.company_name.label }}</label>
+            <div>{{ f.company_name }}</div>
+        </div>
+        <div class="form-group">
+            <label>{{ f.recruiter.label }}</label>
+            <div>{{ f.recruiter }}</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 
-</body>
-</html>
+{% endwith %}
+<!-- folder place -->
+
+<script>
+    var activeElement = document.getElementById('user');
+    activeElement.classList.add('active');
+</script>
+
+{% endblock %}
