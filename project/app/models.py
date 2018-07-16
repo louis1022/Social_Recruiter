@@ -13,3 +13,4 @@ class Message(models.Model):
 
     message = models.TextField(max_length=10000) #formでtext area
     user = models.ForeignKey(UserSocialAuth, on_delete=models.SET_NULL, null=True)
+
