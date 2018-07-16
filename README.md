@@ -24,3 +24,11 @@
     - 会社名？
     - DM定型文
     - 検索ワード
+    
+## RDS
+user: social
+password: password
+DB: social_recruiter
+
+## TODO
+- アカウント情報入力時、求人情報も

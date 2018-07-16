@@ -13,6 +13,8 @@ from .models import Message
 from .forms import MessageForm
 from django.views import generic,View
 from django.contrib import messages
+from .models import Introduce
+from .forms import IntroduceForm
 
 
 APP_NAME = 'app'
@@ -90,3 +92,32 @@ class DeleteMessage(generic.DeleteView):
             self.request, '「{}」を削除しました'.format(self.object))
 
         return result
+
+def user_page(request):
+    user = get_object_or_404(UserSocialAuth, user_id=request.user.id)
+    #mess = Introduce.objects.get(user=user)
+    if request.method == 'POST':
+        form = IntroduceForm(request.POST) # request.POSTに送られてきたデータがある
+        print(form)
+        if form.is_valid():
+            if not Introduce.objects.filter(user=user).exists():
+                post = form.save(commit=False) # まだIntroduceモデルは保存しない
+                user = get_object_or_404(UserSocialAuth, user_id=request.user.id)
+                post.user = user
+                post.save()
+                messages.success(request, "保存しました")
+                return redirect('/user')
+            else:
+                intro = get_object_or_404(Introduce, user_id=request.user.id)
+                form = IntroduceForm(request.POST, instance=intro)
+                form.save()
+                return redirect('/user')
+    else: # 初回アクセスで空のformほしい
+        if not Introduce.objects.filter(user=user).exists():
+            form = IntroduceForm()
+        else:
+            intro = get_object_or_404(Introduce, user_id=request.user.id)
+            form = IntroduceForm(instance=intro)
+
+
+    return render(request, 'accounts/top.html', {'form':form, 'user':user})
