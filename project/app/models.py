@@ -14,3 +14,9 @@ class Message(models.Model):
     message = models.TextField(max_length=10000) #formでtext area
     user = models.ForeignKey(UserSocialAuth, on_delete=models.SET_NULL, null=True)
 
+class Introduce(models.Model):
+
+    user = models.OneToOneField(UserSocialAuth, on_delete=models.SET_NULL, null=True)
+    company_name = models.CharField(max_length=64)
+    recruiter = models.CharField(max_length=32)
+
