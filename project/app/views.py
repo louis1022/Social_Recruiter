@@ -18,6 +18,7 @@ from .forms import IntroduceForm
 
 
 APP_NAME = 'app'
+LP_NAME = 'lp'
 
 
 class DashboardPage(TemplateView):
@@ -25,7 +26,7 @@ class DashboardPage(TemplateView):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_anonymous:
-            self.template_name = '%s/lp.html' % APP_NAME
+            self.template_name = '%s/top.html' % LP_NAME
             return render(request, self.template_name, {})
         elif request.user.is_authenticated:
             user = UserSocialAuth.objects.get(user_id=request.user.id)
