@@ -37,8 +37,13 @@
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-
     {% endwith %}
+
+    <div class="iframe-container d-none d-lg-block">
+      <iframe src="https://www.amazon.co.jp/">
+        <p>Your browser does not support iframes.</p>
+      </iframe>
+    </div>
 
     <script>
         var activeElement = document.getElementById('create');
