@@ -50,7 +50,7 @@ class tablesPage(LoginRequiredMixin, TemplateView):
         if 'q' in request.GET.keys():
             self.q = request.GET['q']
         context['q'] = self.q
-        persons = Person.objects.filter(descriptionn__contains=self.q)
+        persons = Person.objects.filter(description__contains=self.q)
         context['persons'] = persons
         return render(request, self.template_name, context)
 
