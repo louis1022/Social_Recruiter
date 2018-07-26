@@ -1,9 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'app/base.html' %}
 {% block display_nav %}Table List{% endblock %}
 {% block active_nav_name %}Table List{% endblock %}
 
 
 {% block content %}
+<!--
   <p>クエリフォームも書く。送信されたら検索してリダイレクトされるようにする</p>
   <p>ここにテーブル表示</p>
 
@@ -194,7 +195,85 @@
       </div>
     </div>
   </div>
+  -->
 
+    <div class="content">
+    <div class="container-fluid">
+    <div class="row">
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">{{ q }} エンジニア</h4>
+                <form class="navbar-form" action="/tables" method="GET">
+                    <div class="input-group no-border">
+                        <input type="text" value="" class="form-control" placeholder="Search..." name="q">
+                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                            <i class="material-icons">search</i>
+                            <div class="ripple-container"></div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="text-primary">
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Screen_name
+                        </th>
+                        <th>
+                            follower
+                        </th>
+                        <th>
+                            follow
+                        </th>
+                        <th>
+                            description
+                        </th>
+                        </thead>
+                        <tbody>
+                        {% for item in object_list %}
+                            <tr>
+                                <td>{{item.id}}</td>
+                                <td>{{item.screen_name}}</td>
+                                <td>{{item.follower_count}}</td>
+                                <td>{{item.follow_count}}</td>
+                                <td>{{item.description}}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    {% if is_paginated %}
+        <div class="pagination">
+        <div class="previous-button" style="float: left; width: 50%;">
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">&lt;&lt; Prev</a>
+                    {% else %}
+                        <a href="#" class="btn btn-secondary btn-lg disabled" role="button" aria-disabled="true">&lt;&lt; Prev</a>
+                    {% endif %}
+        </div>
+        <div class="next-button" style=" width: 50%; float: right; text-align: right;">
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Next &gt;&gt;</a>
+                    {% else %}
+                        <a href="#" class="btn btn-secondary btn-lg disabled" role="button" aria-disabled="true">Next &gt;&gt;</a>
+                    {% endif %}
+        </div>
+        </div>
+    {% endif %}
+    <div style="clear: both;"></div>
 
     <script>
         var activeElement = document.getElementById('table');
