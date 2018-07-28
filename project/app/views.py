@@ -4,17 +4,16 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.http import HttpResponse
 from django.views.generic import TemplateView, View, ListView
+from django.views.generic.edit import FormView
 from social_django.models import UserSocialAuth
 
 from app.models import Person
 from django.shortcuts import get_object_or_404,render,redirect
 from django.urls import reverse_lazy
-from .models import Message
-from .forms import MessageForm
 from django.views import generic,View
 from django.contrib import messages
-from .models import Introduce
-from .forms import IntroduceForm
+from .models import Introduce,Message
+from .forms import IntroduceForm,MessageForm,ContactForm
 
 
 APP_NAME = 'app'
@@ -132,3 +131,14 @@ def user_page(request):
 
 
     return render(request, 'accounts/top.html', {'form':form, 'user':user})
+
+class ContactView(FormView):
+    template_name = "app/contactForm.html"
+    form_class = ContactForm
+    success_url = "/contact"
+
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+        form.send_email()
+        return super(ContactView, self).form_valid(form)

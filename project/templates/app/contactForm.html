@@ -1,0 +1,13 @@
+{% extends "app/base.html" %}
+{% block content %}
+    {% with form as f %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>{{ f.message.label }}</label>
+                <div>{{ f.message }}</div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    {% endwith %}
+{% endblock %}
