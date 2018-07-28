@@ -17,6 +17,7 @@ from .forms import IntroduceForm,MessageForm,ContactForm
 
 
 APP_NAME = 'app'
+LP_NAME = 'lp'
 
 
 class DashboardPage(TemplateView):
@@ -24,7 +25,7 @@ class DashboardPage(TemplateView):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_anonymous:
-            self.template_name = '%s/lp.html' % APP_NAME
+            self.template_name = '%s/top.html' % LP_NAME
             return render(request, self.template_name, {})
         elif request.user.is_authenticated:
             user = UserSocialAuth.objects.get(user_id=request.user.id)
@@ -48,10 +49,16 @@ class tablesPage(LoginRequiredMixin, ListView):
     def get_queryset(self):
         if self.request.GET.get('q'):
             q = self.request.GET.get('q')
-            q = q.strip().split(' ')
+            q_words = q.strip().split()
+            # q = ["'%{0}%'".format(i) for i in q]
+            # q = ' or '.join(q)
+            # q = 'SELECT * from app_person WHERE description LIKE '+q
+            # return Person.objects.raw('SELECT * from app_person WHERE description LIKE \'%python%\'')
             person = Person.objects.filter()
-            for i in q:
-                person=person.filter(description__icontains=i)
+
+            for q_word in q_words:
+                person=person.filter(description__icontains=q_word)
+
             return person
 
         else:
