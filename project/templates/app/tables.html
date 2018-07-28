@@ -57,7 +57,7 @@
                                 {% else %}
                                     <td>{{ forloop.counter }}</td>
                                 {% endif %}
-                                <td>{{item.screen_name}}</td>
+                                <td><a href='https://twitter.com/{{item.screen_name}}' target="_blank">{{item.screen_name}}</a></td>
                                 <td>{{item.follower_count}}</td>
                                 <td>{{item.follow_count}}</td>
 
