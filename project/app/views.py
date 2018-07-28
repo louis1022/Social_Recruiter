@@ -47,7 +47,7 @@ class tablesPage(LoginRequiredMixin, ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        if self.request.GET:
+        if self.request.GET.get('q'):
             q = self.request.GET.get('q')
             q = q.strip().split(' ')
             # q = ["'%{0}%'".format(i) for i in q]
@@ -57,9 +57,8 @@ class tablesPage(LoginRequiredMixin, ListView):
             person = Person.objects.filter()
 
             for i in q:
-                person=person.filter(description__contains=i)
+                person=person.filter(description__icontains=i)
 
-            # return Person.objects.all()
             return person
         else:
             return Person.objects.all()
@@ -67,6 +66,8 @@ class tablesPage(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['q'] = self.request.GET.get('q')
+        context['count'] = self.get_queryset().count()
+        context['page'] = self.request.GET.get('page')
 
         return context
 

@@ -1,201 +1,11 @@
 {% extends 'app/base.html' %}
+{% load app_tag %}
+
 {% block display_nav %}Table List{% endblock %}
 {% block active_nav_name %}Table List{% endblock %}
 
 
 {% block content %}
-<!--
-  <p>クエリフォームも書く。送信されたら検索してリダイレクトされるようにする</p>
-  <p>ここにテーブル表示</p>
-
-  <div class="content">
-    <div class="container-fluid">
-      <div class="row">
-
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-header card-header-primary">
-              <h4 class="card-title ">{{ q }} Webエンジニア</h4>
-              <form class="navbar-form" action="/tables" method="GET">
-                <div class="input-group no-border">
-                  <input type="text" value="" class="form-control" placeholder="Search..." name="q">
-                  <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                    <i class="material-icons">search</i>
-                    <div class="ripple-container"></div>
-                  </button>
-                </div>
-              </form>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-hover">
-                  <thead class="text-primary">
-                    <th>
-                      ID
-                    </th>
-                    <th>
-                      Screen_name
-                    </th>
-                    <th>
-                      follower
-                    </th>
-                    <th>
-                      follow
-                    </th>
-                    <th>
-                      description
-                    </th>
-                  </thead>
-                  <tbody>
-                    {% for p in persons %}
-                      <tr>
-                        <td>{{p.id}}</td>
-                        <td>{{p.screen_name}}</td>
-                        <td>{{p.follower_count}}</td>
-                        <td>{{p.follow_count}}</td>
-                        <td>{{p.descriptionn}}</td>
-                      </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-header card-header-primary">
-              <h4 class="card-title ">サーバーサイドエンジニア</h4>
-              <p class="card-category"> Here is a subtitle for this table</p>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-hover">
-                  <thead class="text-primary">
-                    <th>
-                      ID
-                    </th>
-                    <th>
-                      Screen_name
-                    </th>
-                    <th>
-                      follower
-                    </th>
-                    <th>
-                      follow
-                    </th>
-                    <th>
-                      description
-                    </th>
-                  </thead>
-                  <tbody>
-                    {% for p in persons %}
-                      <tr>
-                        <td>{{p.id}}</td>
-                        <td>{{p.screen_name}}</td>
-                        <td>{{p.follower_count}}</td>
-                        <td>{{p.follow_count}}</td>
-                        <td>{{p.descriptionn}}</td>
-                      </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-header card-header-primary">
-              <h4 class="card-title ">フロントエンジニア</h4>
-              <p class="card-category"> Here is a subtitle for this table</p>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-hover">
-                  <thead class="text-primary">
-                    <th>
-                      ID
-                    </th>
-                    <th>
-                      Screen_name
-                    </th>
-                    <th>
-                      follower
-                    </th>
-                    <th>
-                      follow
-                    </th>
-                    <th>
-                      description
-                    </th>
-                  </thead>
-                  <tbody>
-                    {% for p in persons %}
-                      <tr>
-                        <td>{{p.id}}</td>
-                        <td>{{p.screen_name}}</td>
-                        <td>{{p.follower_count}}</td>
-                        <td>{{p.follow_count}}</td>
-                        <td>{{p.descriptionn}}</td>
-                      </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-header card-header-primary">
-              <h4 class="card-title ">デザイナー</h4>
-              <p class="card-category"> Here is a subtitle for this table</p>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-hover">
-                  <thead class="text-primary">
-                    <th>
-                      ID
-                    </th>
-                    <th>
-                      Screen_name
-                    </th>
-                    <th>
-                      follower
-                    </th>
-                    <th>
-                      follow
-                    </th>
-                    <th>
-                      description
-                    </th>
-                  </thead>
-                  <tbody>
-                    {% for p in persons %}
-                      <tr>
-                        <td>{{p.id}}</td>
-                        <td>{{p.screen_name}}</td>
-                        <td>{{p.follower_count}}</td>
-                        <td>{{p.follow_count}}</td>
-                        <td>{{p.descriptionn}}</td>
-                      </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  -->
 
     <div class="content">
     <div class="container-fluid">
@@ -204,7 +14,10 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header card-header-primary">
-                <h4 class="card-title ">{{ q }} エンジニア</h4>
+                <h4 class="card-title ">
+                    {{ q|default:"" }}エンジニア
+                    {{ count }}人
+                </h4>
                 <form class="navbar-form" action="/tables" method="GET">
                     <div class="input-group no-border">
                         <input type="text" value="" class="form-control" placeholder="Search..." name="q">
@@ -220,7 +33,7 @@
                     <table class="table table-hover">
                         <thead class="text-primary">
                         <th>
-                            ID
+                            Index
                         </th>
                         <th>
                             Screen_name
@@ -238,10 +51,16 @@
                         <tbody>
                         {% for item in object_list %}
                             <tr>
-                                <td>{{item.id}}</td>
+                                {# <td>{{item.id}}</td> #}
+                                {% if page %}
+                                    <td>{{ page|index:forloop.counter }}</td>
+                                {% else %}
+                                    <td>{{ forloop.counter }}</td>
+                                {% endif %}
                                 <td>{{item.screen_name}}</td>
                                 <td>{{item.follower_count}}</td>
                                 <td>{{item.follow_count}}</td>
+
                                 <td>{{item.description}}</td>
                             </tr>
                         {% endfor %}
@@ -259,14 +78,22 @@
         <div class="pagination">
         <div class="previous-button" style="float: left; width: 50%;">
                     {% if page_obj.has_previous %}
-                        <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">&lt;&lt; Prev</a>
+                        {% if q %}
+                            <a href="?page={{ page_obj.previous_page_number }}&q={{ q }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">&lt;&lt; Prev</a>
+                        {% else %}
+                            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">&lt;&lt; Prev</a>
+                        {% endif %}
                     {% else %}
                         <a href="#" class="btn btn-secondary btn-lg disabled" role="button" aria-disabled="true">&lt;&lt; Prev</a>
                     {% endif %}
         </div>
         <div class="next-button" style=" width: 50%; float: right; text-align: right;">
                     {% if page_obj.has_next %}
-                        <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Next &gt;&gt;</a>
+                        {% if q %}
+                            <a href="?page={{ page_obj.next_page_number }}&q={{ q }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Next &gt;&gt;</a>
+                        {% else %}
+                            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Next &gt;&gt;</a>
+                        {% endif %}
                     {% else %}
                         <a href="#" class="btn btn-secondary btn-lg disabled" role="button" aria-disabled="true">Next &gt;&gt;</a>
                     {% endif %}
