@@ -50,16 +50,11 @@ class tablesPage(LoginRequiredMixin, ListView):
         if self.request.GET.get('q'):
             q = self.request.GET.get('q')
             q = q.strip().split(' ')
-            # q = ["'%{0}%'".format(i) for i in q]
-            # q = ' or '.join(q)
-            # q = 'SELECT * from app_person WHERE description LIKE '+q
-            # return Person.objects.raw('SELECT * from app_person WHERE description LIKE \'%python%\'')
             person = Person.objects.filter()
-
             for i in q:
                 person=person.filter(description__icontains=i)
-
             return person
+
         else:
             return Person.objects.all()
 
@@ -70,19 +65,6 @@ class tablesPage(LoginRequiredMixin, ListView):
         context['page'] = self.request.GET.get('page')
 
         return context
-
-    # def get(self, request, *args, **kwargs):
-    #     context = super(tablesPage, self).get_context_data(**kwargs)
-    #     if 'q' in request.GET:
-    #         self.q = request.GET.get('q')
-    #         context['q'] = self.q
-    #         persons = Person.objects.filter(description__contains=self.q)
-    #         context['persons'] = persons
-    #     else:
-    #         context['persons'] = Person.objects.raw('SELECT * FROM app_person LIMIT 10')
-
-    #     return render(request, self.template_name, context)
-
 
 def get_message(request):
     user = get_object_or_404(UserSocialAuth, user_id=request.user.id)
