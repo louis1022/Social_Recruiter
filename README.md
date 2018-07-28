@@ -15,27 +15,27 @@
     - 自己紹介
     - フォロー数
     - フォロワー数
-    
+
 - Follower_DB    
     - user_id
-    
+
 - Config_DB    
     - サービス利用者名
     - 会社名？
     - DM定型文
     - 検索ワード
-    
+
 ## RDS
 user: social
 password: password
 DB: social_recruiter
 
 ## TODO
-- アカウント情報入力時、求人情報も
-- フロントでのみID１から
-- 位置情報カラムに追加
-- follow follower いる？表示形式検討
-- screen name押したら新規タブでその人のプロフに
-- クエリ(AND)
-- 問い合わせフォームについて
-- テーブル以外を隠す
+- [ ] アカウント情報入力時、求人情報も
+- [x] フロントでのみID１から
+- [ ] 位置情報カラムに追加
+- [ ] follow follower いる？表示形式検討
+- [x] screen name押したら新規タブでその人のプロフに
+- [ ] クエリ(AND)
+- [ ] 問い合わせフォームについて
+- [x] テーブル以外を隠す
