@@ -50,10 +50,6 @@ class tablesPage(LoginRequiredMixin, ListView):
         if self.request.GET.get('q'):
             q = self.request.GET.get('q')
             q_words = q.strip().split()
-            # q = ["'%{0}%'".format(i) for i in q]
-            # q = ' or '.join(q)
-            # q = 'SELECT * from app_person WHERE description LIKE '+q
-            # return Person.objects.raw('SELECT * from app_person WHERE description LIKE \'%python%\'')
             person = Person.objects.filter()
 
             for q_word in q_words:
@@ -112,10 +108,8 @@ class DeleteMessage(generic.DeleteView):
 
 def user_page(request):
     user = get_object_or_404(UserSocialAuth, user_id=request.user.id)
-    #mess = Introduce.objects.get(user=user)
     if request.method == 'POST':
         form = IntroduceForm(request.POST) # request.POSTに送られてきたデータがある
-        print(form)
         if form.is_valid():
             if not Introduce.objects.filter(user=user).exists():
                 post = form.save(commit=False) # まだIntroduceモデルは保存しない
@@ -145,7 +139,5 @@ class ContactView(FormView):
     success_url = "/contact"
 
     def form_valid(self, form):
-        # This method is called when valid form data has been POSTed.
-        # It should return an HttpResponse.
         form.send_email()
         return super(ContactView, self).form_valid(form)
