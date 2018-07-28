@@ -7,7 +7,7 @@ class Person(models.Model):
     screen_name = models.CharField(max_length=128)
     follower_count = models.IntegerField()
     follow_count = models.IntegerField()
-    descriptionn = models.TextField()
+    description = models.TextField()
 
 class Message(models.Model):
 

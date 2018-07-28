@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.http import HttpResponse
-from django.views.generic import TemplateView, View
+from django.views.generic import TemplateView, View, ListView
 from social_django.models import UserSocialAuth
 
 from app.models import Person
@@ -42,18 +42,47 @@ class userProfilePage(LoginRequiredMixin, TemplateView):
 
 
 
-class tablesPage(LoginRequiredMixin, TemplateView):
+class tablesPage(LoginRequiredMixin, ListView):
     template_name = '%s/tables.html' % APP_NAME
-    q = ''
+    model = Person
+    paginate_by = 10
 
-    def get(self, request, *args, **kwargs):
-        context = super(tablesPage, self).get_context_data(**kwargs)
-        if 'q' in request.GET.keys():
-            self.q = request.GET['q']
-        context['q'] = self.q
-        persons = Person.objects.filter(descriptionn__contains=self.q)
-        context['persons'] = persons
-        return render(request, self.template_name, context)
+    def get_queryset(self):
+        if self.request.GET.get('q'):
+            q = self.request.GET.get('q')
+            q = q.strip().split(' ')
+            # q = ["'%{0}%'".format(i) for i in q]
+            # q = ' or '.join(q)
+            # q = 'SELECT * from app_person WHERE description LIKE '+q
+            # return Person.objects.raw('SELECT * from app_person WHERE description LIKE \'%python%\'')
+            person = Person.objects.filter()
+
+            for i in q:
+                person=person.filter(description__icontains=i)
+
+            return person
+        else:
+            return Person.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['q'] = self.request.GET.get('q')
+        context['count'] = self.get_queryset().count()
+        context['page'] = self.request.GET.get('page')
+
+        return context
+
+    # def get(self, request, *args, **kwargs):
+    #     context = super(tablesPage, self).get_context_data(**kwargs)
+    #     if 'q' in request.GET:
+    #         self.q = request.GET.get('q')
+    #         context['q'] = self.q
+    #         persons = Person.objects.filter(description__contains=self.q)
+    #         context['persons'] = persons
+    #     else:
+    #         context['persons'] = Person.objects.raw('SELECT * FROM app_person LIMIT 10')
+
+    #     return render(request, self.template_name, context)
 
 
 def get_message(request):
