@@ -11,4 +11,5 @@ urlpatterns = [
     path('message/create/', views.get_message, name='create'),
     path('message/edit/<int:pk>', views.UpdateMessage.as_view(), name='edit'),
     path('message/delete/<int:pk>', views.DeleteMessage.as_view(), name='delete'),
+    path('contact/',views.ContactView.as_view(), name='contact'),
 ]
