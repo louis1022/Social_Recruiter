@@ -8,12 +8,19 @@ class MessageForm(forms.ModelForm):
     class Meta:
         model = Message # どのモデルからformつくる？
         fields = ('message',) # どのフィールドこのformで使う
+        labels = {
+            'message':'メッセージ内容',
+        }
 
 class IntroduceForm(forms.ModelForm):
 
     class Meta:
         model = Introduce
         fields = ("company_name","recruiter",)
+        labels = {
+            'company_name':'会社名,部署名',
+            'recruiter':'採用者名',
+        }
 
 class ContactForm(forms.Form):
     name = forms.CharField(required=False, label="お名前")
