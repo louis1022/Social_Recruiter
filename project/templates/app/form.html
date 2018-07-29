@@ -1,17 +1,17 @@
 {% extends "app/base.html" %}
 {% block content %}
     {% if messages %}
-        <ul class="messages">
+        <div class="alert alert-success" role="alert">
             {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {{ message }}
             {% endfor %}
-        </ul>
+        </div>
     {% endif %}
 
     <table class="table">
         <tr>
-            <th class="text-center">Message</th>
-            <th class="text-right">Actions</th>
+            <th class="text-center">メッセージ内容</th>
+            <th class="text-right">操作</th>
         </tr>
         <tbody>
         {% for m in mess %}

@@ -20,10 +20,6 @@
 <body class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="{% static 'app/assets/img/sidebar-1.jpg' %}">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-        Tip 2: you can also add an image using data-image tag
-      -->
       <div class="logo">
         <a href="/" class="simple-text logo-normal">
           Social Recruiter
@@ -51,6 +47,12 @@
                   <a class="nav-link" href="/tables">
                       <i class="material-icons">content_paste</i>
                       <p>Table List</p>
+                  </a>
+              </li>
+              <li class="nav-item" id="contact">
+                  <a class="nav-link" href="/contact">
+                      <i class="material-icons">mail</i>
+                      <p>Contact</p>
                   </a>
               </li>
               <!--
@@ -117,8 +119,8 @@
           <nav class="float-left">
             <ul>
               <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
+                <a href="https://www.dip-net.co.jp/">
+                  Our Company
                 </a>
               </li>
               <li>
@@ -126,6 +128,7 @@
                   About Us
                 </a>
               </li>
+                {% comment %}
               <li>
                 <a href="http://blog.creative-tim.com">
                   Blog
@@ -136,8 +139,10 @@
                   Licenses
                 </a>
               </li>
+              {% endcomment %}
             </ul>
           </nav>
+        {% comment %}
           <div class="copyright float-right">
             &copy;
             <script>
@@ -145,6 +150,7 @@
             </script>, made with <i class="material-icons">favorite</i> by
             <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
           </div>
+        {% endcomment %}
         </div>
       </footer>
 

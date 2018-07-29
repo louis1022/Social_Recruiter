@@ -35,7 +35,3 @@ DB: social_recruiter
 - フロントでのみID１から
 - 位置情報カラムに追加
 - follow follower いる？表示形式検討
-- screen name押したら新規タブでその人のプロフに
-- クエリ(AND)
-- 問い合わせフォームについて
-- テーブル以外を隠す
