@@ -1,15 +1,23 @@
 {% extends "app/base.html" %}
 {% block content %}
-    {% with form as f %}
+    {% if messages %}
+            <div class="alert alert-primary" role="alert">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+    {% endif %}
+
         <form method="post">
             {% csrf_token %}
+            {% for field in form %}
             <div class="form-group">
-                <label>{{ f.message.label }}</label>
-                <div>{{ f.message }}</div>
+                <label>{{ field.label }}{% if field.field.required %}(※必須){% endif %}</label>
+                <div>{{ field }}</div>
             </div>
+            {% endfor %}
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-    {% endwith %}
 
     <script>
         var activeElement = document.getElementById('contact');

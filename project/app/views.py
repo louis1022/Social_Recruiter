@@ -139,5 +139,7 @@ class ContactView(FormView):
     success_url = "/contact"
 
     def form_valid(self, form):
+        result = super(ContactView, self).form_valid(form)
         form.send_email()
-        return super(ContactView, self).form_valid(form)
+        messages.success(self.request, '送信完了')
+        return result

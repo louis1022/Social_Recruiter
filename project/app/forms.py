@@ -3,8 +3,6 @@ from .models import Message,Introduce
 from django.core.mail import send_mail
 from django.conf import settings
 
-# class MessageForm(forms.Form):
-#     message = forms.CharField(label='message', max_length=10000)
 class MessageForm(forms.ModelForm):
 
     class Meta:
@@ -18,11 +16,17 @@ class IntroduceForm(forms.ModelForm):
         fields = ("company_name","recruiter",)
 
 class ContactForm(forms.Form):
-    message = forms.CharField(widget=forms.Textarea)
+    name = forms.CharField(required=False, label="お名前")
+    email = forms.EmailField(required=False, label="メールアドレス")
+    message = forms.CharField(widget=forms.Textarea,label='お問い合わせ内容')
 
     def send_email(self):
+
+        name = self.cleaned_data['name']
+        email = self.cleaned_data['email']
         message = self.cleaned_data['message']
         from_email = settings.EMAIL_HOST_USER
+
         to = [settings.EMAIL_HOST_USER]
 
-        send_mail("問い合わせ", message, from_email, to)
+        send_mail("問い合わせ{}({})".format(name,email), message, from_email, to)
