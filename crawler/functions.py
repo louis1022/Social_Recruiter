@@ -3,7 +3,7 @@ import json
 import time
 import random
 import numpy as np
-from db import psql_save
+from db import psql_save, RDS
 from requests_oauthlib import OAuth1Session
 
 
@@ -29,10 +29,10 @@ class twitter():
             if req.status_code == 200:
                 temp = json.loads(req.text)
                 ids.extend(temp['ids'])
-                print('totalGetFollowerNum: {0}'.format(len(ids)))
                 cursor = temp['next_cursor']
                 params['cursor'] = temp['next_cursor']
-                time.sleep(10*random.uniform(0.5,1.5))
+                print('totalGetFollowerNum: {0}'.format(len(ids)))
+                time.sleep(5*random.uniform(0.5,1.5))
             else:
                 print ("Error: %d at getFollowerIds" % req.status_code)
         return ids
@@ -63,7 +63,7 @@ class twitter():
     def getUserInfo(self, ids):
         url = 'https://api.twitter.com/1.1/users/lookup.json'
         ids = np.array(ids).astype(str)
-        psql = psql_save()
+        rds = RDS()
 
         for i in range(0, len(ids), 100):
             _ids = ','.join(ids[i:i+100])
@@ -74,7 +74,7 @@ class twitter():
                 req_text = json.loads(req.text)
                 for user in req_text:
                     try:
-                        psql.insert_user_info(user)
+                        rds.insert_user_info(user)
                     except:
                         pass
             else:

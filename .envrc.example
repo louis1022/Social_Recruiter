@@ -1,0 +1,12 @@
+# TwitterAIPKey
+export CONSUMER_KEY=
+export CONSUMER_SECRET=
+export ACCESS_TOKEN=
+export ACCESS_SECRET=
+
+
+# RDS
+export RDS_HOST=
+export RDS_DATABASE=
+export RDS_USERNAME=
+export RDS_PASSWORD=

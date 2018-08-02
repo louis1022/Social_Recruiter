@@ -31,6 +31,7 @@ password: password
 DB: social_recruiter
 
 ## TODO
+<<<<<<< HEAD
 - [ ] アカウント情報入力時、求人情報も
 - [x] フロントでのみID１から
 - [ ] 位置情報カラムに追加
@@ -39,3 +40,9 @@ DB: social_recruiter
 - [ ] クエリ(AND)
 - [ ] 問い合わせフォームについて
 - [x] テーブル以外を隠す
+=======
+- アカウント情報入力時、求人情報も
+- フロントでのみID１から
+- 位置情報カラムに追加
+- follow follower いる？表示形式検討
+>>>>>>> 2069cbd52b09fde5cc6420d243cfe6e9821d0875
