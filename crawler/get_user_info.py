@@ -19,10 +19,9 @@ def main():
     target_screen_name = args.target
 
     tw = twitter()
-    for t in list(target_screen_name):
-        ids = tw.getFollowerIds(screen_name=t)
-        tw.getUserInfo(ids)
-        time.sleep(60*10)
+    ids = tw.getFollowerIds(screen_name=target_screen_name)
+    tw.getUserInfo(ids[4076:])
+    time.sleep(60*10)
 
 
 if __name__=='__main__':
