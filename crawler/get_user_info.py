@@ -8,8 +8,9 @@ import pandas as pd
 
 from functions import twitter
 
-# 済：vaaaaanquish, TJO_datasci, ex_takezawa,
-#
+# 済：vaaaaanquish, TJO_datasci, ex_takezawa, arton, tanaka_akr, shin1x1, iteman, shimizukawa, yukihiro_matz, tokibito
+# kis, yosuke_furukawa, meso
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -20,8 +21,7 @@ def main():
 
     tw = twitter()
     ids = tw.getFollowerIds(screen_name=target_screen_name)
-    tw.getUserInfo(ids[4076:])
-    time.sleep(60*10)
+    tw.getUserInfo(ids)
 
 
 if __name__=='__main__':
