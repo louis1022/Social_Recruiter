@@ -8,8 +8,8 @@ import pandas as pd
 
 from functions import twitter
 
-# 済：vaaaaanquish, TJO_datasci, ex_takezawa, arton, tanaka_akr, shin1x1, iteman, shimizukawa, yukihiro_matz, tokibito
-# kis, yosuke_furukawa, meso
+# 済：vaaaaanquish, TJO_datasci, ex_takezawa, arton, tanaka_akr, shin1x1, iteman, shimizukawa, yukihiro_matz, tokibito, yosuke_furukawa
+# kis, meso
 
 
 def main():

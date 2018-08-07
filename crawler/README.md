@@ -1,6 +1,4 @@
 # エンジニア採用Bot
-<<<<<<< HEAD
------
 
 ## やること
 - Twitterでエンジニアをピックアップする。
@@ -19,7 +17,6 @@
 
 
 ## 実行
-=======
 
 ## 環境構築
 ```
@@ -41,7 +38,7 @@ $ python crawler/get_user_info.py -t tokoroten
 
 
 ## PsotgreSQL実行
->>>>>>> 2069cbd52b09fde5cc6420d243cfe6e9821d0875
+
 - Postgresqlの起動
 ```
 postgres -D /usr/local/var/postgres
