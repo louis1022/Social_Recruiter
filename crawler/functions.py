@@ -2,6 +2,8 @@ import os
 import json
 import time
 import random
+from tqdm import tqdm
+
 import numpy as np
 from db import psql_save, RDS
 from requests_oauthlib import OAuth1Session
@@ -63,9 +65,9 @@ class twitter():
     def getUserInfo(self, ids):
         url = 'https://api.twitter.com/1.1/users/lookup.json'
         ids = np.array(ids).astype(str)
-        rds = RDS()
+        db = psql_save()
 
-        for i in range(0, len(ids), 100):
+        for i in tqdm(range(0, len(ids), 100)):
             _ids = ','.join(ids[i:i+100])
             params = {'user_id': _ids}
 
@@ -74,7 +76,7 @@ class twitter():
                 req_text = json.loads(req.text)
                 for user in req_text:
                     try:
-                        rds.insert_user_info(user)
+                        db.insert_user_info(user)
                     except:
                         pass
             else:

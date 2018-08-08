@@ -2,12 +2,18 @@ from django.db import models
 from social_django.models import UserSocialAuth
 
 # Create your models here.
-class Person(models.Model):
-    id = models.IntegerField(primary_key=True)
-    screen_name = models.CharField(max_length=128)
-    follower_count = models.IntegerField()
-    follow_count = models.IntegerField()
-    description = models.TextField()
+class Person(models.Model):    
+    user_id = models.BigIntegerField(primary_key=True)
+    screen_name =  models.CharField(max_length=128)
+    location =  models.CharField(max_length=128)
+    url =  models.CharField(max_length=128, null=True)
+    description = models.TextField(null=True)
+    friends_count = models.IntegerField()
+    followers_count = models.IntegerField()
+    listed_count = models.IntegerField(null=True)
+    favourites_count = models.IntegerField(null=True)
+    statuses_count = models.IntegerField(null=True)
+    created_at = models.DateTimeField(null=True)
 
 class Message(models.Model):
 
