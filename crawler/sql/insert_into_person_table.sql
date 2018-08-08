@@ -1,10 +1,12 @@
+truncate social_recruiter.app_person;
+
 insert into social_recruiter.app_person 
 (
   user_id,
   screen_name,
   location,
   url,
-  discription,
+  description,
   friends_count,
   followers_count,
   listed_count,
@@ -18,7 +20,7 @@ select
   screen_name,
   location,
   url,
-  discription,
+  description,
   friends_count,
   followers_count,
   listed_count,

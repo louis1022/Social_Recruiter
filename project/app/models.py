@@ -7,7 +7,7 @@ class Person(models.Model):
     screen_name =  models.CharField(max_length=128)
     location =  models.CharField(max_length=128)
     url =  models.CharField(max_length=128, null=True)
-    discription = models.TextField(null=True)
+    description = models.TextField(null=True)
     friends_count = models.IntegerField()
     followers_count = models.IntegerField()
     listed_count = models.IntegerField(null=True)

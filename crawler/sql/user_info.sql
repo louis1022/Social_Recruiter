@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS social_recruit.user_info (
             screen_name TEXT,
             location TEXT,
             url TEXT,
-            discription TEXT,
+            description TEXT,
             friends_count INT,
             followers_count INT,
             listed_count INT,
