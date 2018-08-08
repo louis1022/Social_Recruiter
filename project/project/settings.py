@@ -75,20 +75,23 @@ DATABASES = {
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         
         # --- MySQL ---
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'social_recruiter',
-        'USER': 'social',
-        'PASSWORD': 'password',
-        'HOST': 'mysqlinstance.cemknam06dlj.us-east-2.rds.amazonaws.com',
-        'PORT': '3306',
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'social_recruiter',
+        # 'USER': 'social',
+        # 'PASSWORD': 'password',
+        # 'HOST': 'mysqlinstance.cemknam06dlj.us-east-2.rds.amazonaws.com',
+        # 'PORT': '3306',
         
         # --- PosgreSQL ---
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': os.getenv(RDS_DATABASE),
-        # 'USER': os.getenv(RDS_USERNAME),
-        # 'PASSWORD': os.getenv(RDS_PASSWORD),
-        # 'HOST': os.getenv(RDS_HOST),
-        # 'PORT': '5432',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv('RDS_DATABASE'),
+        'USER': os.getenv('RDS_USERNAME'),
+        'PASSWORD': os.getenv('RDS_PASSWORD'),
+        'HOST': os.getenv('RDS_HOST'),
+        'PORT': '5432',
+        'OPTIONS': {
+            'options': '-c search_path=social_recruiter'
+        },
     }
 }
 
@@ -139,8 +142,8 @@ AUTHENTICATION_BACKENDS = [
 
 
 
-SOCIAL_AUTH_TWITTER_KEY = os.getenv(SOCIAL_AUTH_TWITTER_KEY) # Consumer Key (API Key)
-SOCIAL_AUTH_TWITTER_SECRET = os.getenv(SOCIAL_AUTH_TWITTER_SECRET) # Consumer Secret (API Secret)
+SOCIAL_AUTH_TWITTER_KEY = os.getenv('SOCIAL_AUTH_TWITTER_KEY') # Consumer Key (API Key)
+SOCIAL_AUTH_TWITTER_SECRET = os.getenv('SOCIAL_AUTH_TWITTER_SECRET') # Consumer Secret (API Secret)
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/' # リダイレクトURL
 
 LOGIN_REDIRECT_URL='/'
