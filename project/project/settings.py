@@ -11,10 +11,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '#r3#c^1_5tvj#&(2wb=!7b$4z0)7!b+4+r3yc9wtcj$@1q9j1c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
+DEBUG = True 
+# DEBUG = False
 
-ALLOWED_HOSTS = [os.getenv('PUBLIC_DNS')]
+ALLOWED_HOSTS = []
 
 
 # Application definition
